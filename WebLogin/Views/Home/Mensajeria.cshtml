@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = " ";
+   
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Email with SendGrid</title>
+</head>
+<body>
+    <h1>Send Email</h1>
+    <form id="emailForm">
+        <label for="toEmail">To:</label>
+        <input type="email" id="toEmail" name="toEmail" required class="form-control form-control-lg">
+        <br>
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required class="form-control form-control-lg">
+        <br>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required class="form-control form-control-lg"></textarea>
+        <br>
+        <button type="submit">Send Email</button>
+    </form>
+
+    <script>
+        document.getElementById('emailForm').addEventListener('submit', async function (event) {
+            event.preventDefault();
+            const toEmail = document.getElementById('toEmail').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            const response = await fetch('/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ toEmail, subject, message })
+            });
+
+            if (response.ok) {
+                alert('Email sent successfully!');
+            } else {
+                alert('Failed to send email.');
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
