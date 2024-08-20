@@ -13,7 +13,25 @@ namespace WebLogin.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        // Acción para procesar el formulario y redirigir a Mensajeria
+        [HttpPost]
+        public ActionResult RedirigirAMensajeria()
+        {
+            return RedirectToAction("Mensajeria");
+        }
+
+        // Acción para la vista Mensajeria
+        public ActionResult Mensajeria()
         {
             return View();
         }
@@ -23,11 +41,11 @@ namespace WebLogin.Controllers
             return View();
         }
 
-        public IActionResult Mensajeria()
-        {
-            ViewData["Mensajeria"] = "Hola, este es un mensaje desde el controlador.";
-            return View();
-        }
+        //public IActionResult Mensajeria()
+        //{
+        //    ViewData["Mensajeria"] = "Hola, este es un mensaje desde el controlador.";
+        //    return View();
+        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
