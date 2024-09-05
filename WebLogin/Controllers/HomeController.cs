@@ -41,11 +41,6 @@ namespace WebLogin.Controllers
             return View();
         }
 
-        //public IActionResult Mensajeria()
-        //{
-        //    ViewData["Mensajeria"] = "Hola, este es un mensaje desde el controlador.";
-        //    return View();
-        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
